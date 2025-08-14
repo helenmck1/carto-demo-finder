@@ -2,26 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Carto Demo Finder</title>
-  <script src="https://cloud.google.com/ai/gen-app-builder/client?hl=en_US"></script>
+
+  <!-- Official Gen App Builder client script (production version) -->
+  <script src="https://gen-app-builder.google.com/client/latest/bundle.js"></script>
+
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; }
-    input { padding: 8px; width: 100%; max-width: 400px; margin-top: 10px; }
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input {
+      padding: 8px;
+      width: 100%;
+      max-width: 400px;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
   <h1>Carto Demo Finder</h1>
+
+  <!-- Gen App Builder search widget -->
   <gen-search-widget
     configId="e245591c-2fd3-4fd9-95b9-5969c6e1b639"
     triggerId="searchWidgetTrigger">
   </gen-search-widget>
+
+  <!-- Input element that triggers the search widget -->
   <input placeholder="Search here" id="searchWidgetTrigger" />
 
-  <!-- Your DOMContentLoaded script -->
+  <!-- Initialize widget after DOM is loaded -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const widget = document.querySelector('gen-search-widget');
-      // Additional initialization if needed
+      // Additional init if needed
+      console.log('Gen App Builder widget initialized', widget);
     });
   </script>
 </body>
