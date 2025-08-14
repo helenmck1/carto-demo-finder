@@ -3,46 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <title>Carto Demo Finder</title>
-  <!-- Official Gen App Builder widget client script -->
+  <!-- Production-ready Gen App Builder widget script -->
   <script src="https://cloud.google.com/ai/gen-app-builder/client?hl=en_US"></script>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; }
-    h1 { margin-bottom: 20px; }
-    #searchContainer { margin-bottom: 10px; max-width: 400px; }
-    input { padding: 8px; width: 100%; margin-bottom: 5px; }
-    button { padding: 8px 12px; }
-    gen-search-widget { width: 100%; height: 600px; display: block; }
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    #searchContainer {
+      margin-top: 20px;
+      max-width: 600px;
+    }
+    input#searchWidgetTrigger {
+      padding: 8px;
+      width: 100%;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
   </style>
 </head>
 <body>
   <h1>Carto Demo Finder</h1>
 
-  <!-- Search input + submit button -->
+  <!-- Input that triggers the search widget -->
+  <input placeholder="Search here" id="searchWidgetTrigger" />
+
+  <!-- Container where the full widget UI will render -->
   <div id="searchContainer">
-    <input placeholder="Search here" id="searchWidgetTrigger" />
-    <button id="searchSubmit">Search</button>
+    <gen-search-widget
+      configId="e245591c-2fd3-4fd9-95b9-5969c6e1b639"
+      triggerId="searchWidgetTrigger"
+      style="width: 100%; display: block;">
+    </gen-search-widget>
   </div>
 
-  <!-- Full widget overlay -->
-  <gen-search-widget
-    configId="e245591c-2fd3-4fd9-95b9-5969c6e1b639">
-  </gen-search-widget>
-
   <script>
-    // Grab the widget element
-    const widget = document.querySelector('gen-search-widget');
-
-    // Open widget on submit and pass the search query
-    document.getElementById('searchSubmit').addEventListener('click', () => {
-      const queryInput = document.getElementById('searchWidgetTrigger').value;
-      widget.open = true;       // Open overlay
-      widget.query = queryInput; // Run search
-    });
-
-    // Optional: open widget on pressing Enter in input
-    document.getElementById('searchWidgetTrigger').addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        document.getElementById('searchSubmit').click();
+    document.addEventListener('DOMContentLoaded', function() {
+      // Make sure the widget initializes after DOM loads
+      const widget = document.querySelector('gen-search-widget');
+      if (widget) {
+        // Additional options could go here if needed
+        console.log('Search widget loaded');
       }
     });
   </script>
